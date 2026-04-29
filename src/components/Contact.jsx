@@ -39,7 +39,7 @@ export default function Contact() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.8, delay: 0.2 }}
-            href="mailto:contact@rnithishvar.com" // Placeholder email, can be updated
+            href="mailto:r.nithishvar@gmail.com"
             className="group flex items-center gap-3 px-8 py-4 rounded-full bg-foreground text-background font-medium hover:scale-105 transition-transform magnetic text-lg"
           >
             Get in touch <ArrowUpRight className="w-5 h-5 group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform" />
@@ -68,7 +68,7 @@ export default function Contact() {
               <span className="sr-only">LinkedIn</span>
             </a>
             <a 
-              href="mailto:contact@rnithishvar.com" 
+              href="mailto:r.nithishvar@gmail.com" 
               className="text-muted hover:text-foreground transition-colors magnetic p-2"
             >
               <Mail size={24} />
