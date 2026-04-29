@@ -35,7 +35,7 @@ export default function Achievements() {
           >
             <h2 className="text-sm uppercase tracking-[0.2em] text-muted mb-4 font-semibold">Recognition</h2>
             <h3 className="text-4xl md:text-5xl font-heading font-semibold text-foreground">
-              4+ Technical Event Wins
+              3+ Technical Event Wins
             </h3>
           </motion.div>
           

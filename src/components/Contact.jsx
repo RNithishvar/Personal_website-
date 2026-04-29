@@ -78,7 +78,7 @@ export default function Contact() {
 
           <div className="text-muted text-sm font-medium flex flex-col md:flex-row items-center gap-2 md:gap-8">
             <p>© {currentYear} R Nithishvar. All rights reserved.</p>
-            <p>Designed with <span className="text-accent">♥</span></p>
+            <p>Designed by <span className="text-foreground">NV</span></p>
           </div>
         </div>
       </div>

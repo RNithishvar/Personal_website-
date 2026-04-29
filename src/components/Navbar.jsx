@@ -62,7 +62,7 @@ export default function Navbar() {
             onClick={(e) => scrollToSection(e, '#hero')}
             className="text-xl font-heading font-semibold tracking-tight text-foreground magnetic relative z-50"
           >
-            R Nithishvar<span className="text-accent">.</span>
+            R Nithishvar
           </a>
 
           {/* Desktop Nav */}

@@ -24,7 +24,7 @@ export default function Hero() {
   return (
     <section 
       id="hero" 
-      className="relative min-h-screen flex items-center justify-center pt-20 px-6 md:px-12 overflow-hidden"
+      className="relative min-h-screen flex items-center justify-center pt-20 pb-24 px-6 md:px-12 overflow-hidden"
     >
       {/* Background elements */}
       <div className="absolute inset-0 z-0 pointer-events-none">
@@ -58,7 +58,7 @@ export default function Hero() {
           variants={itemVariants}
           className="text-lg md:text-xl text-muted max-w-2xl mx-auto leading-relaxed mb-12"
         >
-          Electronics and communication student, 4+ event winner, and founder mindset — creating AI and IoT systems that solve real-world problems.
+          Electronics and communication student, 3+ event winner, and founder mindset — creating AI and IoT systems that solve real-world problems.
         </motion.p>
 
         <motion.div variants={itemVariants} className="flex flex-wrap items-center justify-center gap-6">
@@ -82,7 +82,7 @@ export default function Hero() {
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ delay: 1.5, duration: 1 }}
-        className="absolute bottom-10 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2"
+        className="absolute bottom-4 md:bottom-10 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2"
       >
         <span className="text-xs uppercase tracking-widest text-muted">Scroll</span>
         <div className="w-[1px] h-12 bg-border relative overflow-hidden">
