@@ -1,25 +1,37 @@
-import { motion } from 'framer-motion';
-import { Trophy, Award, Medal } from 'lucide-react';
+import { motion, AnimatePresence } from 'framer-motion';
+import { Trophy, Award, Medal, X } from 'lucide-react';
+import { useState } from 'react';
+import kanam26Img from '../assets/certificates/kanam26.jpeg';
+import joselexImg from '../assets/certificates/joselex.jpeg';
+import ctechImg from '../assets/certificates/ctech.jpeg';
 
 export default function Achievements() {
+  const [selectedCert, setSelectedCert] = useState(null);
+
   const achievements = [
     {
       title: "Mind Map Innovation",
       prize: "1st Prize",
       event: "Kanam26",
-      icon: <Trophy className="w-8 h-8 text-accent" />
+      description: "Awarded first place for creating a highly innovative mind mapping solution to conceptualize complex electronics systems efficiently.",
+      icon: <Trophy className="w-6 h-6 text-accent" />,
+      image: kanam26Img
     },
     {
       title: "Paper Presentation",
       prize: "1st Prize",
       event: "Joselex",
-      icon: <Award className="w-8 h-8 text-yellow-400" />
+      description: "Secured first prize for presenting a comprehensive research paper outlining modern applications of AI in electronics.",
+      icon: <Award className="w-6 h-6 text-yellow-400" />,
+      image: joselexImg
     },
     {
       title: "Paper Presentation",
       prize: "3rd Prize",
       event: "CTECH Hindustan",
-      icon: <Medal className="w-8 h-8 text-orange-400" />
+      description: "Achieved third place honors for delivering a detailed technical paper focused on cutting-edge IoT integrations.",
+      icon: <Medal className="w-6 h-6 text-orange-400" />,
+      image: ctechImg
     }
   ];
 
@@ -58,29 +70,69 @@ export default function Achievements() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.6, delay: i * 0.2 }}
-              className="group relative overflow-hidden rounded-2xl bg-border/10 border border-border/50 hover:border-accent/50 transition-colors p-8"
+              className="group relative flex flex-col overflow-hidden rounded-2xl bg-border/10 border border-border/50 hover:border-accent/50 transition-colors p-6"
             >
-              {/* Image Placeholder */}
-              <div className="absolute inset-0 bg-gradient-to-br from-accent/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
-              
-              <div className="relative z-10 flex flex-col h-full min-h-[240px]">
-                <div className="mb-auto p-4 bg-background/50 backdrop-blur-md w-fit rounded-xl border border-border/50">
+              <div className="flex justify-between items-start mb-6">
+                <div 
+                  className="w-28 h-20 overflow-hidden rounded-lg relative border border-border/30 flex-shrink-0 bg-background/50 cursor-pointer group/img"
+                  onClick={() => setSelectedCert(item)}
+                >
+                  <img src={item.image} alt={`${item.event} certificate`} className="w-full h-full object-cover group-hover/img:scale-110 transition-transform duration-500" />
+                  <div className="absolute inset-0 bg-black/40 opacity-0 group-hover/img:opacity-100 transition-opacity flex items-center justify-center backdrop-blur-[2px]">
+                    <span className="text-[10px] font-medium text-white tracking-widest uppercase">Zoom</span>
+                  </div>
+                </div>
+                <div className="p-3 bg-background/50 backdrop-blur-md w-fit rounded-xl border border-border/50">
                   {item.icon}
                 </div>
-                
-                <div className="mt-8">
+              </div>
+              
+              <div className="flex flex-col flex-1">
+                <div className="mt-auto">
                   <span className="text-sm font-medium text-accent mb-2 block">{item.event}</span>
-                  <h4 className="text-2xl font-heading font-medium text-foreground mb-2">{item.title}</h4>
-                  <p className="text-muted font-medium flex items-center gap-2">
-                    <span className="w-1.5 h-1.5 rounded-full bg-accent"></span>
-                    {item.prize}
+                  <h4 className="text-xl font-heading font-semibold text-foreground mb-3">{item.title}</h4>
+                  <p className="text-muted text-sm leading-relaxed mb-6 flex-1">
+                    {item.description}
                   </p>
+                  <div className="flex items-center gap-2 mt-auto">
+                    <span className="w-2 h-2 rounded-full bg-accent"></span>
+                    <span className="text-foreground font-medium">{item.prize}</span>
+                  </div>
                 </div>
               </div>
             </motion.div>
           ))}
         </div>
       </div>
+
+      <AnimatePresence>
+        {selectedCert && (
+          <motion.div 
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            className="fixed inset-0 z-[100] flex items-center justify-center p-6 bg-background/90 backdrop-blur-md"
+            onClick={() => setSelectedCert(null)}
+          >
+            <motion.div 
+              initial={{ scale: 0.95, opacity: 0, y: 20 }}
+              animate={{ scale: 1, opacity: 1, y: 0 }}
+              exit={{ scale: 0.95, opacity: 0, y: 20 }}
+              transition={{ type: "spring", damping: 25, stiffness: 300 }}
+              className="relative max-w-5xl w-full max-h-[90vh] rounded-xl overflow-hidden shadow-2xl border border-border/50 bg-black flex items-center justify-center"
+              onClick={e => e.stopPropagation()}
+            >
+              <button 
+                onClick={() => setSelectedCert(null)}
+                className="absolute top-4 right-4 z-10 p-2 rounded-full bg-background/50 text-foreground hover:bg-background border border-border/50 transition-colors"
+              >
+                <X size={20} />
+              </button>
+              <img src={selectedCert.image} alt={selectedCert.title} className="max-w-full max-h-[90vh] object-contain" />
+            </motion.div>
+          </motion.div>
+        )}
+      </AnimatePresence>
     </section>
   );
 }

@@ -1,5 +1,7 @@
 import { motion } from 'framer-motion';
 import { ArrowUpRight } from 'lucide-react';
+import focusAiImg from '../assets/focus-ai.png';
+import hillsProjectImg from '../assets/hills-project.jpg';
 
 export default function Projects() {
   const projects = [
@@ -8,6 +10,7 @@ export default function Projects() {
       category: "AI & Productivity",
       description: "AI-powered focus monitoring system that tracks attention and improves productivity through real-time behavioral analysis.",
       imagePlaceholder: "bg-gradient-to-br from-blue-900/40 to-slate-900/80",
+      image: focusAiImg,
       link: "#"
     },
     {
@@ -15,6 +18,7 @@ export default function Projects() {
       category: "IoT & Embedded Systems",
       description: "IoT-based safety solution designed to reduce accidents on hill roads using smart alerts and sensor networks.",
       imagePlaceholder: "bg-gradient-to-br from-emerald-900/40 to-slate-900/80",
+      image: hillsProjectImg,
       link: "#"
     }
   ];
@@ -46,8 +50,11 @@ export default function Projects() {
                 className="w-full md:w-3/5"
               >
                 <div className={`relative w-full aspect-[4/3] rounded-3xl overflow-hidden ${project.imagePlaceholder} border border-border/50 group`}>
-                  {/* Subtle parallax background placeholder */}
-                  <div className="absolute inset-0 bg-[url('https://www.transparenttextures.com/patterns/cubes.png')] opacity-10 mix-blend-overlay group-hover:scale-105 transition-transform duration-700 ease-out"></div>
+                  {project.image ? (
+                    <img src={project.image} alt={project.title} className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700 ease-out" />
+                  ) : (
+                    <div className="absolute inset-0 bg-[url('https://www.transparenttextures.com/patterns/cubes.png')] opacity-10 mix-blend-overlay group-hover:scale-105 transition-transform duration-700 ease-out"></div>
+                  )}
                   
                   {/* Hover reveal text for placeholders */}
                   <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-500 bg-background/20 backdrop-blur-sm">
